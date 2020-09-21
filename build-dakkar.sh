@@ -57,6 +57,7 @@ ROM types:
   mokee-oreo
   pixel81
   pixel90
+  pixel100
   potato-pie
   rebellion-pie
   rr-oreo
@@ -185,6 +186,14 @@ function get_rom_type() {
                 mainbranch="pie"
                 localManifestBranch="android-9.0"
                 treble_generate="pixel"
+                extra_make_options="WITHOUT_CHECK_API=true"
+                jack_enabled="false"
+                ;;
+            pixel100)
+                mainrepo="https://github.com/PixelExperience/manifest.git"
+                mainbranch="ten"
+                localManifestBranch="android-9.0"
+                treble_generate="pixel"#express luke uses aosp
                 extra_make_options="WITHOUT_CHECK_API=true"
                 jack_enabled="false"
                 ;;
