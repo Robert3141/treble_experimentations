@@ -22,6 +22,10 @@ elif [ "$1" == "android-10.0" ];then
     manifest_url="https://android.googlesource.com/platform/manifest"
     aosp="android-10.0.0_r41"
     phh="android-10.0"
+elif [ "$1" == "android-11.0" ];then
+    manifest_url="https://android.googlesource.com/platform/manifest"
+    aosp="android-11.0.0_r3"
+    phh="android-11.0"
 fi
 
 if [ "$release" == true ];then
@@ -56,13 +60,36 @@ repo manifest -r > release/$rom_fp/manifest.xml
 bash "$originFolder"/list-patches.sh
 cp patches.zip release/$rom_fp/patches.zip
 
-if [ "$1" = "android-10.0" ];then
-	#buildVariant treble_arm64_afS-userdebug quack-arm64-aonly-floss
-	#buildVariant treble_arm64_avS-userdebug quack-arm64-aonly-vanilla
-	#buildVariant treble_arm64_agS-userdebug quack-arm64-aonly-gapps
-	#buildVariant treble_arm64_aoS-userdebug quack-arm64-aonly-go
-	#buildVariant treble_arm64_bfS-userdebug quack-arm64-ab-floss
-	#buildVariant treble_arm64_bvS-userdebug quack-arm64-ab-vanilla
+if [ "$1" = "android-11.0" ];then
+	buildVariant treble_arm64_bvS-userdebug roar-arm64-ab-vanilla
+	buildVariant treble_arm_bvS-userdebug roar-arm-ab-vanilla
+	buildVariant treble_a64_bvS-userdebug roar-a64-ab-vanilla
+    (
+        git clone https://github.com/phhusson/sas-creator
+        cd sas-creator
+
+        git clone https://github.com/phhusson/vendor_vndk -b android-10.0
+
+        #Those require running as root
+        bash run.sh 32
+        xz -c s.img -T0 > ../release/$rom_fp/system-roar-arm-aonly-vanilla.img.xz
+
+        bash run.sh 64
+        xz -c s.img -T0 > ../release/$rom_fp/system-roar-arm64-aonly-vanilla.img.xz
+
+        bash lite-adapter.sh 64
+        xz -c s.img -T0 > ../release/$rom_fp/system-roar-arm64-ab-vndklite-vanilla.img.xz
+
+        bash lite-adapter.sh 32
+        xz -c s.img -T0 > ../release/$rom_fp/system-roar-a64-ab-vndklite-vanilla.img.xz
+    )
+elif [ "$1" = "android-10.0" ];then
+	buildVariant treble_arm64_afS-userdebug quack-arm64-aonly-floss
+	buildVariant treble_arm64_avS-userdebug quack-arm64-aonly-vanilla
+	buildVariant treble_arm64_agS-userdebug quack-arm64-aonly-gapps
+	buildVariant treble_arm64_aoS-userdebug quack-arm64-aonly-go
+	buildVariant treble_arm64_bfS-userdebug quack-arm64-ab-floss
+	buildVariant treble_arm64_bvS-userdebug quack-arm64-ab-vanilla
 	buildVariant treble_arm64_bgS-userdebug quack-arm64-ab-gapps
 	#buildVariant treble_arm64_boS-userdebug quack-arm64-ab-go
 	#buildVariant treble_arm_avS-userdebug quack-arm-aonly-vanilla
