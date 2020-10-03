@@ -84,11 +84,11 @@ if [ "$1" = "android-11.0" ];then
         xz -c s.img -T0 > ../release/$rom_fp/system-roar-a64-ab-vndklite-vanilla.img.xz
     )
 elif [ "$1" = "android-10.0" ];then
-	buildVariant treble_arm64_afS-userdebug quack-arm64-aonly-floss
-	buildVariant treble_arm64_avS-userdebug quack-arm64-aonly-vanilla
-	buildVariant treble_arm64_agS-userdebug quack-arm64-aonly-gapps
-	buildVariant treble_arm64_aoS-userdebug quack-arm64-aonly-go
-	buildVariant treble_arm64_bfS-userdebug quack-arm64-ab-floss
+	#buildVariant treble_arm64_afS-userdebug quack-arm64-aonly-floss
+	#buildVariant treble_arm64_avS-userdebug quack-arm64-aonly-vanilla
+	#buildVariant treble_arm64_agS-userdebug quack-arm64-aonly-gapps
+	#buildVariant treble_arm64_aoS-userdebug quack-arm64-aonly-go
+	#buildVariant treble_arm64_bfS-userdebug quack-arm64-ab-floss
 	buildVariant treble_arm64_bvS-userdebug quack-arm64-ab-vanilla
 	buildVariant treble_arm64_bgS-userdebug quack-arm64-ab-gapps
 	#buildVariant treble_arm64_boS-userdebug quack-arm64-ab-go
@@ -105,30 +105,31 @@ elif [ "$1" = "android-10.0" ];then
 	#buildVariant treble_a64_bgS-userdebug quack-arm32_binder64-ab-gapps
 	#buildVariant treble_a64_boS-userdebug quack-arm32_binder64-ab-go
 else
-	buildVariant treble_arm64_avN-userdebug arm64-aonly-vanilla-nosu
-	buildVariant treble_arm64_agS-userdebug arm64-aonly-gapps-su
+	#buildVariant treble_arm64_avN-userdebug arm64-aonly-vanilla-nosu
+	#buildVariant treble_arm64_agS-userdebug arm64-aonly-gapps-su
 	#buildVariant treble_arm64_afS-userdebug arm64-aonly-floss-su
-	rm -Rf out/target/product/phhgsi*
+	#rm -Rf out/target/product/phhgsi*
 
-	buildVariant treble_arm64_bvN-userdebug arm64-ab-vanilla-nosu
-	buildVariant treble_arm64_bgS-userdebug arm64-ab-gapps-su
+	#buildVariant treble_arm64_bvN-userdebug arm64-ab-vanilla-nosu
+	#buildVariant treble_arm64_bgS-userdebug arm64-ab-gapps-su
 	#buildVariant treble_arm64_bfS-userdebug arm64-ab-floss-su
-	rm -Rf out/target/product/phhgsi*
+	#rm -Rf out/target/product/phhgsi*
 
-	buildVariant treble_arm_avN-userdebug arm-aonly-vanilla-nosu
-	[ "$1" != "android-9.0" ] && buildVariant treble_arm_aoS-userdebug arm-aonly-go-su
-	buildVariant treble_arm_agS-userdebug arm-aonly-gapps-su
-	rm -Rf out/target/product/phhgsi*
+	#buildVariant treble_arm_avN-userdebug arm-aonly-vanilla-nosu
+	#[ "$1" != "android-9.0" ] && buildVariant treble_arm_aoS-userdebug arm-aonly-go-su
+	#buildVariant treble_arm_agS-userdebug arm-aonly-gapps-su
+	#rm -Rf out/target/product/phhgsi*
 
-	buildVariant treble_a64_avN-userdebug arm32_binder64-aonly-vanilla-nosu
-	buildVariant treble_a64_agS-userdebug arm32_binder64-aonly-gapps-su
-	rm -Rf out/target/product/phhgsi*
+	#buildVariant treble_a64_avN-userdebug arm32_binder64-aonly-vanilla-nosu
+	#buildVariant treble_a64_agS-userdebug arm32_binder64-aonly-gapps-su
+	#rm -Rf out/target/product/phhgsi*
 
-	if [ "$1" = "android-9.0" ];then
-	buildVariant treble_a64_bvN-userdebug arm32_binder64-ab-vanilla-nosu
-	buildVariant treble_a64_bgS-userdebug arm32_binder64-ab-gapps-su
-	fi
-	rm -Rf out/target/product/phhgsi*
+	#if [ "$1" = "android-9.0" ];then
+	#buildVariant treble_a64_bvN-userdebug arm32_binder64-ab-vanilla-nosu
+	#buildVariant treble_a64_bgS-userdebug arm32_binder64-ab-gapps-su
+	#fi
+	#rm -Rf out/target/product/phhgsi*
+	echo YOU COMMENTED ALL THE BUILDS OUT
 fi
 
 if [ "$release" == true ];then
