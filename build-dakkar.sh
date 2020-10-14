@@ -193,7 +193,7 @@ function get_rom_type() {
                 mainrepo="https://github.com/PixelExperience/manifest.git"
                 mainbranch="ten"
                 localManifestBranch="android-10.0"
-                treble_generate="pixel"#express luke uses aosp
+                treble_generate="pixel" ## express luke uses aosp
                 extra_make_options="WITHOUT_CHECK_API=true"
                 jack_enabled="false"
                 ;;
